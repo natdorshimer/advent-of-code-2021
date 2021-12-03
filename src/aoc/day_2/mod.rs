@@ -22,7 +22,10 @@ pub fn day_2_part_2() {
   println!("Day 2 Part 2: {}", pos.horizontal*pos.depth);
 }
 
-fn move_position_by_command(position: Position, cmd: Command) -> Position {
+fn move_position_by_command(
+  position: Position,
+  cmd: Command
+) -> Position {
   let x = position.horizontal;
   let y = position.depth;
   match cmd {
