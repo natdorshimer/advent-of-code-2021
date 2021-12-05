@@ -7,5 +7,5 @@ fn main() {
   aoc::day_2_part_2();
   aoc::day_3_part_1();
   aoc::day_3_part_2();
-
+  aoc::day_4();
 }
