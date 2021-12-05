@@ -1,106 +1,22 @@
 use std::collections::HashMap;
 use std::fs;
-use std::slice::{Iter, IterMut};
+use std::slice::Iter;
 use std::str::FromStr;
 use indexmap::map::IndexMap;
 use itertools::Itertools;
-use crate::aoc::Then;
+
+
+type Board = Vec<Vec<Position>>;
+type InputNumbers = Vec<u32>;
 
 struct Position {
   value: u32,
   marked: bool
 }
 
-type Board = Vec<Vec<Position>>;
-type InputNumbers = Vec<u32>;
-
-#[derive(Clone)]
-#[derive(Eq)]
-#[derive(PartialEq)]
-#[derive(Hash)]
-struct WinConditionKeyData {
-  board_number: usize,
-  position: usize,
-}
-
-
-#[derive(Clone)]
-#[derive(Eq)]
-#[derive(PartialEq)]
-#[derive(Hash)]
-enum WinConditionKey {
-  Row(WinConditionKeyData),
-  Column(WinConditionKeyData)
-}
-
 struct BoardGameData {
   input: InputNumbers,
   boards: Vec<Board>,
-}
-
-type Count = u32;
-type WinConditionMap = HashMap<WinConditionKey, Count>;
-
-struct WinConditionMatches(WinConditionKey, Count);
-
-impl Position {
-  fn marked(value: u32) -> Position {
-    Position {
-      value,
-      marked: true
-    }
-  }
-
-  fn unmarked(value: u32) -> Position {
-    Position {
-      value,
-      marked: false
-    }
-  }
-}
-
-fn calculate_win_conditions(
-  board: &mut Board,
-  input: u32,
-  board_number: usize
-) -> Vec<WinConditionKey> {
-  let board_size = 5;
-  let mut matches: Vec<WinConditionKey> = vec!();
-  for row in 0..board_size {
-    for col in 0..board_size {
-      if board[row][col].value ==  input {
-          board[row][col] = Position::marked(board[row][col].value.clone());
-          let row_key = WinConditionKey::Row(
-            WinConditionKeyData {
-              board_number,
-              position: row
-            });
-
-          let col_key = WinConditionKey::Column(
-            WinConditionKeyData {
-              board_number,
-              position: col
-            }
-          );
-
-          matches.push(row_key);
-          matches.push(col_key);
-        }
-      }
-    }
-  matches
-}
-
-fn get_unmarked(board: &Board) -> Vec<u32> {
-  board
-    .iter()
-    .flat_map(|row|
-      row
-        .iter()
-        .filter(|pos| !pos.marked)
-        .map(|pos| pos.value)
-        .collect_vec()
-    ).collect_vec()
 }
 
 pub fn day_4() {
@@ -115,10 +31,6 @@ pub fn day_4_part_2_answer(file_name: &str) -> u32 {
 
   let mut win_condition_map: WinConditionMap = HashMap::new();
 
-  struct Winner {
-    board_number: usize,
-    answer: u32
-  }
   type BoardNumber = usize;
   type Answer = u32;
   let mut winners: IndexMap<BoardNumber, Answer> = IndexMap::new();
@@ -174,9 +86,89 @@ pub fn day_4_part_1_answer(file_name: &str) -> u32 {
       }
     }
   }
-  panic!()
+
+  panic!("Bad input: should have returned inside the loop")
 }
 
+
+fn get_unmarked(board: &Board) -> Vec<u32> {
+  board
+    .iter()
+    .flat_map(|row|
+      row
+        .iter()
+        .filter(|pos| !pos.marked)
+        .map(|pos| pos.value)
+        .collect_vec()
+    ).collect_vec()
+}
+
+type Count = u32;
+type WinConditionMap = HashMap<WinConditionKey, Count>;
+
+#[derive(Clone, Eq, PartialEq, Hash)]
+enum WinConditionKey {
+  Row(WinConditionKeyData),
+  Column(WinConditionKeyData)
+}
+
+#[derive(Clone, Eq, PartialEq, Hash)]
+struct WinConditionKeyData {
+  board_number: usize,
+  position: usize,
+}
+
+
+impl Position {
+  fn marked(value: u32) -> Position {
+    Position {
+      value,
+      marked: true
+    }
+  }
+
+  fn unmarked(value: u32) -> Position {
+    Position {
+      value,
+      marked: false
+    }
+  }
+}
+
+fn calculate_win_conditions(
+  board: &mut Board,
+  input: u32,
+  board_number: usize
+) -> Vec<WinConditionKey> {
+  let board_size = 5;
+  let mut matches: Vec<WinConditionKey> = vec!();
+  for row in 0..board_size {
+    for col in 0..board_size {
+      if board[row][col].value ==  input {
+        board[row][col] = Position::marked(board[row][col].value.clone());
+        let row_key = WinConditionKey::Row(
+          WinConditionKeyData {
+            board_number,
+            position: row
+          });
+
+        let col_key = WinConditionKey::Column(
+          WinConditionKeyData {
+            board_number,
+            position: col
+          }
+        );
+
+        matches.push(row_key);
+        matches.push(col_key);
+      }
+    }
+  }
+  matches
+}
+
+
+//Parsing for input
 
 //Filename
 #[derive(Debug)]
@@ -217,7 +209,7 @@ fn parse_input_file(file_name: &str) -> Result<BoardGameData, MissingFileErr> {
   })
 }
 
-fn get_next_board(mut board_lines: &mut Iter<&str>) -> Option<Board> {
+fn get_next_board(board_lines: &mut Iter<&str>) -> Option<Board> {
   let board_game_size = 5;
   (0..board_game_size).fold(Some(vec!()), |mut board_game, _| {
     board_lines

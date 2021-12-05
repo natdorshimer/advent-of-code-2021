@@ -1,3 +1,5 @@
+#![allow(unused)]
+
 mod aoc;
 #[cfg(test)]
 mod tests {
