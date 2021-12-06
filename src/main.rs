@@ -8,4 +8,5 @@ fn main() {
   aoc::day_3_part_1();
   aoc::day_3_part_2();
   aoc::day_4();
+  aoc::day_5();
 }

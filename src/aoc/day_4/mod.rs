@@ -4,6 +4,7 @@ use std::slice::Iter;
 use std::str::FromStr;
 use indexmap::map::IndexMap;
 use itertools::Itertools;
+use crate::aoc::MissingFileErr;
 
 
 type Board = Vec<Vec<Position>>;
@@ -170,9 +171,6 @@ fn calculate_win_conditions(
 
 //Parsing for input
 
-//Filename
-#[derive(Debug)]
-struct MissingFileErr(String);
 
 fn parse_input_file(file_name: &str) -> Result<BoardGameData, MissingFileErr> {
   let input =

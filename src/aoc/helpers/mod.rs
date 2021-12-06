@@ -14,6 +14,9 @@ impl<T> Then for T where T: Sized {
   }
 }
 
+//Filename
+#[derive(Debug)]
+pub struct MissingFileErr(pub String);
 
 pub fn binary_to_decimal(bin_str: &String) -> Result<usize, ParseIntError> {
   usize::from_str_radix(bin_str, 2)
