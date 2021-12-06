@@ -63,7 +63,6 @@ impl Line {
 
     let direction = start.get_direction_to(end, include_diagonals);
     direction.as_ref().map(|dir| {
-      // println!("dir, {}, {}", dir.x, dir.y);
       let mut points: Vec<Point> = vec!();
       points.push(start.clone());
       while start != *end {
