@@ -1,8 +1,6 @@
 use core::ops;
-use std::cmp::{max, min};
-use std::collections::{HashMap, HashSet};
+use std::collections::HashMap;
 use std::fs;
-use std::ops::{Range, RangeFrom};
 use std::str::FromStr;
 use itertools::Itertools;
 use crate::aoc::MissingFileErr;

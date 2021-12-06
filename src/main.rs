@@ -1,6 +1,5 @@
 pub mod aoc;
 
-
 fn main() {
   aoc::day_1();
   aoc::day_2();

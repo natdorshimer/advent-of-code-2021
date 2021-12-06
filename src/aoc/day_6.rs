@@ -44,7 +44,7 @@ fn get_num_fishies_fish_makes(
   };
 }
 
-fn get_total_number_fishies_created(mut fishies: Vec<LanternFish>, days: u64) -> u64 {
+fn get_total_number_fishies_created(fishies: Vec<LanternFish>, days: u64) -> u64 {
   let mut num_can_create: HashMap<MemoKey, u64> = HashMap::new();
 
   fishies
@@ -94,11 +94,11 @@ fn parse_input_file(file_name: &str) -> Result<Vec<LanternFish>, MissingFileErr>
 }
 
 pub fn day_6_part_1_answer(file_name: &str) -> u64 {
-  let mut fishies = parse_input_file(file_name).unwrap();
+  let fishies = parse_input_file(file_name).unwrap();
   get_total_number_fishies_created(fishies, 80)
 }
 
 pub fn day_6_part_2_answer(file_name: &str) -> u64 {
-  let mut fishies = parse_input_file(file_name).unwrap();
+  let fishies = parse_input_file(file_name).unwrap();
   get_total_number_fishies_created(fishies, 256)
 }
