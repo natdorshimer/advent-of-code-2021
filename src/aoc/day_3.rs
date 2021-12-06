@@ -136,8 +136,5 @@ pub fn day_3_part_2_answer(file_name: &str) -> u64 {
   let oxygen_value = get_rating_from_input(&lines, &Measurement::Oxygen);
   let co2_value = get_rating_from_input(&lines, &Measurement::CO2Scrubber);
 
-  println!("{}, {}", &oxygen_value, &co2_value);
-  println!("day 3 part 2 value: {}", oxygen_value*co2_value);
-
   (oxygen_value*co2_value) as u64
 }
