@@ -30,7 +30,6 @@ fn get_num_fishies_fish_makes(
   if days == 0 {
     memo.insert(key, 1);
     return 1
-
   }
 
   return if fish.timer == 0 {
@@ -101,6 +100,5 @@ pub fn day_6_part_1_answer(file_name: &str) -> u64 {
 
 pub fn day_6_part_2_answer(file_name: &str) -> u64 {
   let mut fishies = parse_input_file(file_name).unwrap();
-
   get_total_number_fishies_created(fishies, 256)
 }
