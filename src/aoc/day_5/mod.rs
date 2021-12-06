@@ -23,9 +23,6 @@ impl Point {
     let dir_x = direction.x;
     let dir_y = direction.y;
 
-    let point_t = (dir_x, dir_y);
-
-
     let is_diagonal = include_diagonals && i32::abs(dir_x) == i32::abs(dir_y);
     let is_horizontal = dir_y == 0 && dir_x != 0;
     let is_vertical = dir_x == 0 && dir_y != 0;
