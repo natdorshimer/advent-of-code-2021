@@ -147,7 +147,7 @@ fn parse_input_file(file_name: &str) -> Result<Vec<Line>, MissingFileErr> {
 
 
 pub fn day_5() {
-  let file = "src/aoc/day_5/input.txt";
+  let file = "src/resources/day_5_input.txt";
   println!("Day 5 part 1: {}", day_5_part_1_answer(file));
   println!("Day 5 part 2: {}", day_5_part_2_answer(file));
 }

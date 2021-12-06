@@ -2,24 +2,30 @@ use std::fs;
 use std::str::FromStr;
 use itertools::Itertools;
 
-pub fn day_2_part_1() {
-  let input = fs::read_to_string("src/aoc/day_2/input.txt").unwrap();
+pub fn day_2_part_1_answer(file_name: &str) -> u32{
+  let input = fs::read_to_string(file_name).unwrap();
   let lines: Vec<&str> = input.lines().collect();
   let pos = parse_commands(lines)
     .into_iter()
     .fold(Position::default(), move_position_by_command);
 
-  println!("Day 2 Part 1{}", pos.horizontal*pos.depth);
+  pos.horizontal*pos.depth
 }
 
-pub fn day_2_part_2() {
-  let input = fs::read_to_string("src/aoc/day_2/input.txt").unwrap();
+pub fn day_2() {
+  let file_name = "src/resources/day_2_input.txt";
+  println!("Day 2 Part 1 Answer: {}", day_2_part_1_answer(file_name));
+  println!("Day 2 Part 2 Answer: {}", day_2_part_2_answer(file_name));
+}
+
+pub fn day_2_part_2_answer(file_name: &str) -> u32{
+  let input = fs::read_to_string(file_name).unwrap();
   let lines: Vec<&str> = input.lines().collect();
   let pos = parse_commands(lines)
     .into_iter()
     .fold(SubmarinePosition::default(), move_submarine_position_by_command);
 
-  println!("Day 2 Part 2: {}", pos.horizontal*pos.depth);
+  pos.horizontal*pos.depth
 }
 
 fn move_position_by_command(

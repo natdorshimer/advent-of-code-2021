@@ -45,8 +45,14 @@ fn get_char_by_rating(chars: &Vec<char>, rating: &Measurement) -> char {
       .unwrap().clone()
 }
 
-pub fn day_3_part_1() {
-  let input = fs::read_to_string("src/aoc/day_3/input.txt").unwrap();
+pub fn day_3() {
+  let file_name = "src/resources/day_3_input.txt";
+  println!("Day 3 Part 1 Answer: {}", day_3_part_1_answer(file_name));
+  println!("Day 3 Part 2 Answer: {}", day_3_part_2_answer(file_name));
+}
+
+pub fn day_3_part_1_answer(file_name: &str) -> u64 {
+  let input = fs::read_to_string(file_name).unwrap();
   let lines: Vec<String> = input.lines().map(|it| it.to_string()).collect();
   let input_char_grid: Vec<Vec<char>> =
     lines
@@ -86,7 +92,7 @@ pub fn day_3_part_1() {
     .then(binary_to_decimal)
     .unwrap();
 
-  println!("Day 3 part 1: {}", gamma*epsilon);
+  (gamma * epsilon) as u64
 }
 
 fn filter_by_rating(
@@ -123,8 +129,8 @@ fn get_rating_from_input(lines: &Vec<String>, rating: &Measurement) -> usize {
     .unwrap()
 }
 
-pub fn day_3_part_2() {
-  let input = fs::read_to_string("src/aoc/day_3/input.txt").unwrap();
+pub fn day_3_part_2_answer(file_name: &str) -> u64 {
+  let input = fs::read_to_string(file_name).unwrap();
   let lines: Vec<String> = input.lines().map(|it| it.to_string()).collect();
 
   let oxygen_value = get_rating_from_input(&lines, &Measurement::Oxygen);
@@ -132,4 +138,6 @@ pub fn day_3_part_2() {
 
   println!("{}, {}", &oxygen_value, &co2_value);
   println!("day 3 part 2 value: {}", oxygen_value*co2_value);
+
+  (oxygen_value*co2_value) as u64
 }

@@ -21,7 +21,7 @@ struct BoardGameData {
 }
 
 pub fn day_4() {
-  let file_name = "src/aoc/day_4/input.txt";
+  let file_name = "src/resources/day_4_input.txt";
   println!("Day 4 part 1 answer: {}", day_4_part_1_answer(file_name));
   println!("Day 4 part 2 answer: {}", day_4_part_2_answer(file_name));
 }
