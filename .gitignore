@@ -1,1 +1,5 @@
-/target
+/rust/target/
+*/build/
+*.DS_Store*
+.idea*
+.gradle
