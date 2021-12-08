@@ -1,6 +1,5 @@
 package advent.of.code
 
-import java.lang.Integer.min
 import kotlin.math.abs
 
 
@@ -19,14 +18,12 @@ fun mostEfficientFuel(input: String, fuelCostIncreases: Boolean): Int {
       .toList()
 
   val max = crabPositions.maxOf{ it }
-  return (0..max).fold(Int.MAX_VALUE) { minFuelCost, pos ->
-    val fuelCost = crabPositions
+  return (0..max).minOf { pos ->
+    crabPositions
       .asSequence()
       .map{ crabPos -> abs(crabPos - pos) }
       .map{ distance -> if(fuelCostIncreases) getIncreasingFuelCosts(distance) else distance }
       .sum()
-
-    min(minFuelCost, fuelCost)
   }
 }
 
