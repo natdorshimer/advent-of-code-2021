@@ -27,11 +27,10 @@ private fun getNumberFishiesMade(
     getNumberFishiesMade(fish.subtractDay(), daysLeft-1, stored)
   }
 
-
   return numCreated.also{ stored[key] = it }
 }
 
-private fun getTotalFishiesMade(input: String, daysLeft: Int): Long {
+fun getTotalFishiesMade(input: String, daysLeft: Int): Long {
   val fishies = input.split(",").map{ LanternFish(it.toInt()) }
 
   val storedVals = mutableMapOf<MemoKey, Long>()
@@ -43,9 +42,9 @@ private fun getTotalFishiesMade(input: String, daysLeft: Int): Long {
 object Day6 {
   private val fileName = "day-6-input.txt"
 
-  private fun part1Answer(input: String) = getTotalFishiesMade(input, 80)
+  fun part1Answer(input: String) = getTotalFishiesMade(input, 80)
 
-  private fun part2Answer(input: String) = getTotalFishiesMade(input, 256)
+  fun part2Answer(input: String) = getTotalFishiesMade(input, 256)
 
   fun answers() {
     readFileToString(fileName)?.let{
