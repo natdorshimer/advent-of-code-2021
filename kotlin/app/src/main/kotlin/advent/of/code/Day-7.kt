@@ -4,7 +4,13 @@ import java.lang.Integer.min
 import kotlin.math.abs
 
 
-fun mostEfficientFuel(input: String): Int {
+fun getIncreasingFuelCosts(distance: Int): Int {
+  //Gauss's Formula
+  //1 + 2 + 3... n = (n+1)*(n)/2
+  return (distance)*(distance+1)/2
+}
+
+fun mostEfficientFuel(input: String, fuelCostIncreases: Boolean): Int {
   val crabPositions =
     input
       .splitToSequence(',')
@@ -17,31 +23,7 @@ fun mostEfficientFuel(input: String): Int {
     val fuelCost = crabPositions
       .asSequence()
       .map{ crabPos -> abs(crabPos - pos) }
-      .sum()
-
-    min(minFuelCost, fuelCost)
-  }
-}
-
-fun getIncreasingFuelCosts(distance: Int): Int {
-  //Gauss's Formula
-  //1 + 2 + 3... n = (n+1)*(n)/2
-  return (distance)*(distance+1)/2
-}
-
-fun mostEfficientFuelIncreasing(input: String): Int {
-  val crabPositions =
-    input
-      .splitToSequence(',')
-      .map(String::toInt)
-      .sorted()
-      .toList()
-
-  val max = crabPositions.maxOf{ it }
-  return (0..max).fold(Int.MAX_VALUE) { minFuelCost, pos ->
-    val fuelCost = crabPositions
-      .asSequence()
-      .map{ crabPos -> getIncreasingFuelCosts(abs(crabPos - pos)) }
+      .map{ distance -> if(fuelCostIncreases) getIncreasingFuelCosts(distance) else distance }
       .sum()
 
     min(minFuelCost, fuelCost)
@@ -51,9 +33,9 @@ fun mostEfficientFuelIncreasing(input: String): Int {
 object Day7 {
   private val fileName = "day-7-input.txt"
 
-  fun part1Answer(input: String): Int = mostEfficientFuel(input)
+  fun part1Answer(input: String): Int = mostEfficientFuel(input, fuelCostIncreases = false)
 
-  fun part2Answer(input: String): Int = mostEfficientFuelIncreasing(input)
+  fun part2Answer(input: String): Int = mostEfficientFuel(input, fuelCostIncreases = true)
 
   fun answers() {
     readFileToString(fileName)?.let{
