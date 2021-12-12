@@ -7,4 +7,5 @@ package advent.of.code
 fun main() {
   Day6.answers()
   Day7.answers()
+  Day8.answers()
 }
