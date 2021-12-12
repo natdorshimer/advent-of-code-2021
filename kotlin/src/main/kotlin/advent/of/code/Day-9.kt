@@ -93,7 +93,7 @@ fun biggestBasinsMultiplied(input: String): Int {
 }
 
 object Day9 {
-  private val fileName = "day-9-input.txt"
+  val fileName = "day-9-input.txt"
 
   fun part1Answer(input: String): Int = sumRiskLevels(input)
   fun part2Answer(input: String): Int = biggestBasinsMultiplied(input)

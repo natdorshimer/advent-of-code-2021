@@ -107,7 +107,7 @@ private fun findNumberOfEasyDigits(input: String): Int {
 }
 
 object Day8 {
-  private val fileName = "day-8-input.txt"
+  val fileName = "day-8-input.txt"
 
   fun part1Answer(input: String): Int = findNumberOfEasyDigits(input)
 

@@ -40,7 +40,7 @@ fun getTotalFishiesMade(input: String, daysLeft: Int): Long {
 }
 
 object Day6 {
-  private val fileName = "day-6-input.txt"
+  val fileName = "day-6-input.txt"
 
   fun part1Answer(input: String) = getTotalFishiesMade(input, 80)
 

@@ -28,7 +28,7 @@ fun mostEfficientFuel(input: String, fuelCostIncreases: Boolean): Int {
 }
 
 object Day7 {
-  private val fileName = "day-7-input.txt"
+  val fileName = "day-7-input.txt"
 
   fun part1Answer(input: String): Int = mostEfficientFuel(input, fuelCostIncreases = false)
 
