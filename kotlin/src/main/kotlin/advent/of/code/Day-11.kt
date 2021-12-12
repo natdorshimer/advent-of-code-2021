@@ -136,8 +136,8 @@ object Day11 {
 
   fun answers() {
     readFileToString(fileName)?.let{
-      println("Day 10 Part 1: ${part1Answer(it)}")
-      println("Day 10 Part 2: ${part2Answer(it)}")
+      println("Day 11 Part 1: ${part1Answer(it)}")
+      println("Day 11 Part 2: ${part2Answer(it)}")
     }
   }
 }

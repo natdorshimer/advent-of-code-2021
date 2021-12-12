@@ -4,7 +4,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class Day6Test {
-  val input = readFileToString(Day6.fileName)!!
+  private val input = readFileToString(Day6.fileName)!!
 
   @Test
   fun part1Test() {
@@ -18,7 +18,7 @@ class Day6Test {
 }
 
 class Day7Test {
-  val input = readFileToString(Day7.fileName)!!
+  private val input = readFileToString(Day7.fileName)!!
 
   @Test
   fun part1Test() {
@@ -33,7 +33,7 @@ class Day7Test {
 
 
 class Day8Test {
-  val input = readFileToString(Day8.fileName)!!
+  private val input = readFileToString(Day8.fileName)!!
 
   @Test
   fun part1Test() {
@@ -47,7 +47,7 @@ class Day8Test {
 }
 
 class Day9Test {
-  val input = readFileToString(Day9.fileName)!!
+  private val input = readFileToString(Day9.fileName)!!
 
   @Test
   fun part1Test() {
@@ -61,7 +61,7 @@ class Day9Test {
 }
 
 class Day10Test {
-  val input = readFileToString(Day10.fileName)!!
+  private val input = readFileToString(Day10.fileName)!!
 
   @Test
   fun part1Test() {
@@ -75,7 +75,7 @@ class Day10Test {
 }
 
 class Day11Test {
-  val input = readFileToString(Day11.fileName)!!
+  private val input = readFileToString(Day11.fileName)!!
 
   @Test
   fun part1Test() {
@@ -85,5 +85,19 @@ class Day11Test {
   @Test
   fun part2Test() {
     assertEquals(195, Day11.part2Answer(input))
+  }
+}
+
+class Day12Test {
+  private val input = readFileToString(Day12.fileName)!!
+
+  @Test
+  fun part1Test() {
+    assertEquals(10, Day12.part1Answer(input))
+  }
+
+  @Test
+  fun part2Test() {
+    assertEquals(36, Day12.part2Answer(input))
   }
 }
