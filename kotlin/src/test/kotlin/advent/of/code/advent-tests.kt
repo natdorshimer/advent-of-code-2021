@@ -45,3 +45,19 @@ class Day8Test {
     assertEquals(61229, Day8.part2Answer(input))
   }
 }
+
+class Day9Test {
+  private val fileName = "/day-9-input.txt"
+
+  @Test
+  fun day9Part1Test() {
+    val input = readFileToString(fileName)!!
+    assertEquals(15, Day9.part1Answer(input))
+  }
+
+  @Test
+  fun day9Part2Test() {
+    val input = readFileToString(fileName)!!
+    assertEquals(1134, Day9.part2Answer(input))
+  }
+}
