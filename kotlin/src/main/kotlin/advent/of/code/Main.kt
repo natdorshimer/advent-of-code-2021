@@ -10,4 +10,5 @@ fun main() {
   Day8.answers()
   Day9.answers()
   Day10.answers()
+  Day11.answers()
 }
