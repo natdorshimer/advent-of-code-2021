@@ -5,6 +5,18 @@ typealias Wire = Char
 typealias Digit = Char
 
 private fun hardOne(input: String): Int {
+
+  /*
+  1, 7, 4, 8 right off the bat
+  can find six by looking at 8 and seeing which of 1 is broken off
+  you can then record which of those wires is C or F
+  3 is the 5 piece number with both wires from 1
+  5 is the 5 piece number with the f wire from 1
+  2 is the 5 piece number with the c wire from 1
+  9 is the 6 piece number that contains all of 3
+  0 is the remaining number 6 piece number
+*/
+
   return input
     .lines()
     .sumOf { line ->
