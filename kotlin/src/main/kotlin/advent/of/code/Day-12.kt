@@ -20,7 +20,7 @@ fun pathsThroughCaves(
   return pathsToEnd(
     "start",
     paths,
-    smallCaveAllowance = smallCaveAllowance
+    smallCaveAllowance,
   ).filter{ it.isNotEmpty() && it.last() == "end" }
     .toSet()
     .size
@@ -29,8 +29,8 @@ fun pathsThroughCaves(
 fun pathsToEnd(
   position: String,
   paths: Map<String, Path>,
+  smallCaveAllowance: Int = 0,
   canNoLongerVisit: List<String> = listOf(),
-  smallCaveAllowance: Int = 0
 ): List<Path> {
   if(position == "end") return listOf(listOf("end"))
   return paths[position]?.asSequence()
@@ -49,8 +49,8 @@ fun pathsToEnd(
       pathsToEnd(
         nextPath,
         paths,
+        allowance,
         restrictedList,
-        allowance
       ).map{ listOf(position).plus(it) }
     }
     ?.reduceOrNull(List<Path>::plus)
