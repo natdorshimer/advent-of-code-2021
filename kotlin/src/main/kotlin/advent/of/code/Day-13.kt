@@ -21,7 +21,7 @@ fun performFold(points: List<Point>, fold: Fold): List<Point> {
         .map{ it.first to 2*fold.foldLine - it.second }
         .filter{ it.second >= 0 }
 
-      upperHalf.plus(mirrored).toSet().toList()
+      upperHalf.plus(mirrored).toList()
     }
     is Fold.HorizontalFold -> {
       val leftHalf = points.filter{ it.first < fold.foldLine }
@@ -32,7 +32,7 @@ fun performFold(points: List<Point>, fold: Fold): List<Point> {
           .map{ 2*fold.foldLine - it.first to it.second }
           .filter{ it.first >= 0 }
 
-      leftHalf.plus(mirrored).toSet().toList()
+      leftHalf.plus(mirrored).toList()
     }
   }
 }
@@ -53,7 +53,7 @@ fun dotsGridToString(points: List<Point>): String {
 }
 
 fun parseInput(input: String): Day13Data {
-  val pointsRegex = "\\w+[,]\\w+".toRegex() //ex: 234,31
+  val pointsRegex = "\\w+[,]\\w+".toRegex() //ex: '234,31'
   val points = pointsRegex.findAll(input)
     .map{ it.value }
     .map {
@@ -62,7 +62,7 @@ fun parseInput(input: String): Day13Data {
     }
     .toList()
 
-  val foldsRegex = "\\w+[=]\\w+".toRegex()
+  val foldsRegex = "\\w+[=]\\w+".toRegex()  //ex:  'abc=efg'
   val folds = foldsRegex.findAll(input).map{ it.value }
     .map{ line ->
       val (direction, foldLine) = line.split('=')
