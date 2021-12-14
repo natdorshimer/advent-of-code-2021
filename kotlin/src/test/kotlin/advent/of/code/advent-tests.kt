@@ -101,3 +101,26 @@ class Day12Test {
     assertEquals(36, Day12.part2Answer(input))
   }
 }
+
+class Day13Test {
+  private val input = readFileToString(Day13.fileName)!!
+
+  @Test
+  fun part1Test() {
+    assertEquals(17, Day13.part1Answer(input))
+  }
+
+  @Test
+  fun part2Test() {
+    val part2Answer =
+      """
+      # # # # #
+      #       #
+      #       #
+      #       #
+      # # # # #
+    """.trimIndent()
+
+    assertEquals(part2Answer, Day13.part2Answer(input))
+  }
+}
